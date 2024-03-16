@@ -1,0 +1,3 @@
+- atualizar mensagens de teste,
+- colocar ou não QRcode?,
+- criar entitys ou subir um banco homolog?
