@@ -31,7 +31,6 @@ export class ShortenedUrlValidate {
     try {
       new URL(url);
     } catch (error) {
-      console.log('não bateu aqui?')
       throw new BadRequestException(URL_ERROR_MESSAGE);
     }
   }
