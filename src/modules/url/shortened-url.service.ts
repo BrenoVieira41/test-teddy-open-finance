@@ -74,7 +74,9 @@ export class ShortenedUrlService {
     const shortenedUrl = await this.shortenedRepository.getShortenedUrlWithDeleted(id, user.id);
 
     if (!shortenedUrl) throw new BadRequestException(NOT_EXIST_SHORTENED_URL_ERROR_MESSAGE);
-    return shortenedUrl;
+
+    const newUrl: Url | string = this.tranformUrl(shortenedUrl.shortened_url);
+    return {...shortenedUrl, shortened_url: newUrl};
   }
 
   async findShortenedUrl(user: IUser): Promise<ShortenedUrl[]> {
