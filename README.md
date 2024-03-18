@@ -53,3 +53,6 @@ Teste feito para o processo seletivo da empresa (test teddy open finance).
 
 #### Docs:
 - host/docs
+
+### Infos:
+Por favor, note que o código utiliza o UTC para referência de horário. Se estiver fora do Brasil, as datas de criação e validação da URL podem estar em horário diferente. Além disso, é importante observar que a API não permite spam. Caso não tenha um login, será necessário aguardar um período de 5 minutos após a outra inserção da mesma URL.

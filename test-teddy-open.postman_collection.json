@@ -107,13 +107,12 @@
 							{
 								"key": "authorization",
 								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Indlc2xleW1hcmNvc0t6QGhvdG1haWwuY29tIiwiaWQiOiI0NTJiZGQ5Ny1iOGE3LTRkODItYjhkNy01MDYyOGQyMmU5YWIiLCJuYW1lIjoiV2VzbGV5IE1hcmNvcyIsImlhdCI6MTcxMDczOTI0NCwiZXhwIjoxNzEwODI1NjQ0fQ.bz7aVkJuOero9uB9ECugeEpcQEAxwBDpwVxJ8P-vPUU",
-								"type": "text",
-								"disabled": true
+								"type": "text"
 							}
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"url\": \"https://www.linkedin.com/in/breno-henrique-vieira-leal/\"\r\n}",
+							"raw": "{\r\n    \"url\": \"https://github.com/BrenoVieira41\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -158,20 +157,19 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:3333/url/search?id=6d16e1c0-a991-4d42-9ba8-c04136855dcf",
+							"raw": "http://localhost:3333/url?id=88b07b2c-2995-43be-a4ab-f13b5c49b82b",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
 							"port": "3333",
 							"path": [
-								"url",
-								"search"
+								"url"
 							],
 							"query": [
 								{
 									"key": "id",
-									"value": "6d16e1c0-a991-4d42-9ba8-c04136855dcf"
+									"value": "88b07b2c-2995-43be-a4ab-f13b5c49b82b"
 								}
 							]
 						}
@@ -239,7 +237,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:3333/url?id=049cd2d8-9f37-47c3-925c-736b949b3218",
+							"raw": "http://localhost:3333/url?id=dbeabbd5-5429-4e0f-96f5-ec8569a1fef0",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -251,7 +249,7 @@
 							"query": [
 								{
 									"key": "id",
-									"value": "049cd2d8-9f37-47c3-925c-736b949b3218"
+									"value": "dbeabbd5-5429-4e0f-96f5-ec8569a1fef0"
 								}
 							]
 						}

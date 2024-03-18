@@ -36,7 +36,7 @@ export class ShortenedUrlController {
   }
 
   @UseGuards(JwtAuthGuard)
-  @Get('search/:id')
+  @Get()
   @UsePipes(new ValidationPipe())
   async getShortenedUrl(
     @Query() params?: GetShortenedUrlDto,

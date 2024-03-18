@@ -23,6 +23,7 @@ CREATE TABLE url_accesses (
     shortened_url_id UUID NOT NULL,
     user_id UUID,
     created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
-    CONSTRAINT fk_shortened_url_id FOREIGN KEY (shortened_url_id) REFERENCES shortened_urls(id),
+    CONSTRAINT fk_shortened_url_id FOREIGN KEY (shortened_url_id) REFERENCES shortened_urls(id) ON DELETE CASCADE,
     CONSTRAINT fk_user_id FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE SET NULL
 );
+
