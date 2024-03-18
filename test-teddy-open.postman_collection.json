@@ -1,0 +1,342 @@
+{
+	"info": {
+		"_postman_id": "167a6a2f-cb10-4cdb-9d6e-630dd69d0152",
+		"name": "test-teddy-open",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "15950439"
+	},
+	"item": [
+		{
+			"name": "auth",
+			"item": [
+				{
+					"name": "login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"test@hotmail.com\",\r\n    \"password\": \"2024Test*\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3333/auth/login",
+							"host": [
+								"localhost"
+							],
+							"port": "3333",
+							"path": [
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "me",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InRlc3RAaG90bWFpbC5jb20iLCJpZCI6ImQ0NzNmNDdlLTI4NTYtNGY0MC05Njg3LWM5NzY2NDU2NWUzZiIsIm5hbWUiOiJCcmVubyBWaWVpcmEiLCJpYXQiOjE3MTA3NjExODYsImV4cCI6MTcxMDg0NzU4Nn0.jMgncniu2h9KFtrVTZeNPA7v_0HM1yVC8DYOKBwKlPg",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:3333/auth/me",
+							"host": [
+								"localhost"
+							],
+							"port": "3333",
+							"path": [
+								"auth",
+								"me"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "user",
+			"item": [
+				{
+					"name": "user-create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Breno Vieira\",\r\n    \"email\": \"test@hotmail.com\",\r\n    \"password\": \"2024Test*\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3333/user",
+							"host": [
+								"localhost"
+							],
+							"port": "3333",
+							"path": [
+								"user"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "url",
+			"item": [
+				{
+					"name": "url-create",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Indlc2xleW1hcmNvc0t6QGhvdG1haWwuY29tIiwiaWQiOiI0NTJiZGQ5Ny1iOGE3LTRkODItYjhkNy01MDYyOGQyMmU5YWIiLCJuYW1lIjoiV2VzbGV5IE1hcmNvcyIsImlhdCI6MTcxMDczOTI0NCwiZXhwIjoxNzEwODI1NjQ0fQ.bz7aVkJuOero9uB9ECugeEpcQEAxwBDpwVxJ8P-vPUU",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"url\": \"https://www.linkedin.com/in/breno-henrique-vieira-leal/\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3333/url",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3333",
+							"path": [
+								"url"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "url-get",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Indlc2xleW1hcmNvc0t6QGhvdG1haWwuY29tIiwiaWQiOiI0NTJiZGQ5Ny1iOGE3LTRkODItYjhkNy01MDYyOGQyMmU5YWIiLCJuYW1lIjoiV2VzbGV5IE1hcmNvcyIsImlhdCI6MTcxMDc0NzY2NiwiZXhwIjoxNzEwODM0MDY2fQ.oOCx69T1J4nJlwb4qVKurzROUGd9-izNJqWLmujaB_U",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3333/url/search?id=6d16e1c0-a991-4d42-9ba8-c04136855dcf",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3333",
+							"path": [
+								"url",
+								"search"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "6d16e1c0-a991-4d42-9ba8-c04136855dcf"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "url-update",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Indlc2xleW1hcmNvc0t6QGhvdG1haWwuY29tIiwiaWQiOiI0NTJiZGQ5Ny1iOGE3LTRkODItYjhkNy01MDYyOGQyMmU5YWIiLCJuYW1lIjoiV2VzbGV5IE1hcmNvcyIsImlhdCI6MTcxMDc0NzY2NiwiZXhwIjoxNzEwODM0MDY2fQ.oOCx69T1J4nJlwb4qVKurzROUGd9-izNJqWLmujaB_U",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"url\": \"https://www.linkedin.com/in/breno-henrique-vieira-leal/\",\r\n    \"shortened_url\": \"p4cqGS\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3333/url?id=dbeabbd5-5429-4e0f-96f5-ec8569a1fef0",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3333",
+							"path": [
+								"url"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "dbeabbd5-5429-4e0f-96f5-ec8569a1fef0"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete-get",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Indlc2xleW1hcmNvc0t6QGhvdG1haWwuY29tIiwiaWQiOiI0NTJiZGQ5Ny1iOGE3LTRkODItYjhkNy01MDYyOGQyMmU5YWIiLCJuYW1lIjoiV2VzbGV5IE1hcmNvcyIsImlhdCI6MTcxMDc0NzY2NiwiZXhwIjoxNzEwODM0MDY2fQ.oOCx69T1J4nJlwb4qVKurzROUGd9-izNJqWLmujaB_U",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3333/url?id=049cd2d8-9f37-47c3-925c-736b949b3218",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3333",
+							"path": [
+								"url"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "049cd2d8-9f37-47c3-925c-736b949b3218"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "find-get",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Indlc2xleW1hcmNvc0t6QGhvdG1haWwuY29tIiwiaWQiOiI0NTJiZGQ5Ny1iOGE3LTRkODItYjhkNy01MDYyOGQyMmU5YWIiLCJuYW1lIjoiV2VzbGV5IE1hcmNvcyIsImlhdCI6MTcxMDc0NzY2NiwiZXhwIjoxNzEwODM0MDY2fQ.oOCx69T1J4nJlwb4qVKurzROUGd9-izNJqWLmujaB_U",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3333/url/search",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3333",
+							"path": [
+								"url",
+								"search"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "server-is-running",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:3333",
+					"host": [
+						"localhost"
+					],
+					"port": "3333"
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "redirecionamento",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImJyZW5vaHZsQGhvdG1haWwuY29tIiwiaWQiOiJhMTU4NDc1Yy03MTE2LTQ1Y2EtYTRmNC0zY2I3MWU3ZWE3OGEiLCJuYW1lIjoiQnJlbmluIFZpZWlyYSIsImlhdCI6MTcxMDY3MDI4NSwiZXhwIjoxNzEwNzU2Njg1fQ.P7FXteP6UvhGDIMFOnkY6MtqAw7pyowwISUhOU4s-zU",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "localhost:3333/redirection/uLjUKH",
+					"host": [
+						"localhost"
+					],
+					"port": "3333",
+					"path": [
+						"redirection",
+						"uLjUKH"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

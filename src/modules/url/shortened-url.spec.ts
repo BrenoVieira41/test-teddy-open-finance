@@ -6,14 +6,16 @@ import { ShortenedUrlValidate } from './shortened-url.validations';
 import { ShortenedUrlRepository } from './repositorys/shortened-url.repository';
 import { ShortenedUrlRepositoryMock, shortened_url_mock } from './repositorys/shortened-url.repository.mock';
 import { CreateShortenedUrlDto } from './dto/shortened-url-create.dto';
-import { ID_ERROR_MESSAGE, NEW_URL_ERROR_MESSAGE, NOT_EXIST_SHORTENED_URL_ERROR_MESSAGE, REPEAT_OWN_URL_ERROR_MESSAGE, URL_ERROR_MESSAGE, WAIT_URL_ERROR_MESSAGE } from './shortened-url.constants';
+import { ID_ERROR_MESSAGE, NEW_URL_ERROR_MESSAGE, NOT_EXIST_SHORTENED_URL_ERROR_MESSAGE, REPEAT_OWN_URL_ERROR_MESSAGE, SHORTENED_URL_ALREADY_EXIST, URL_ERROR_MESSAGE, WAIT_URL_ERROR_MESSAGE, WITHOUT_CHANGES_ERROR_MESSAGE } from './shortened-url.constants';
 import { AcessedUrlRepositoryMock } from './acessed-url.service.ts/repositorys/acessed-url.repository.mock';
 import { GetShortenedUrlDto } from './dto/shortened-url-get.dto';
+import { UpdateShortenedUrlDto } from './dto/shortened-url-update.dto';
 
 describe('ShortenedUrl and AcessedUrl', () => {
   let shortenedService: ShortenedUrlService;
   let acessedService: AcessedUrlService;
   let mockShortenedCreate: CreateShortenedUrlDto;
+  let mockShortenedUpdate: UpdateShortenedUrlDto;
   let mockShortenedGet: GetShortenedUrlDto;
   let mockData = shortened_url_mock;
   // let mockAcessed: {};
@@ -37,6 +39,7 @@ describe('ShortenedUrl and AcessedUrl', () => {
 
     shortenedService = module.get<ShortenedUrlService>(ShortenedUrlService);
     mockShortenedCreate = { url: mockData.url, shortened_url: mockData.shortened_url, user_id: mockData.user_id };
+    mockShortenedUpdate = { url: mockData.url, shortened_url: mockData.shortened_url };
     mockShortenedGet = { id: mockData.id };
   });
 
@@ -141,5 +144,54 @@ describe('ShortenedUrl and AcessedUrl', () => {
         expect(error.message).toBe(NOT_EXIST_SHORTENED_URL_ERROR_MESSAGE);
       }
     });
-  })
+  });
+
+  describe('Update Shortened', () => {
+    it('Should return error for no data received', async () => {
+      Reflect.deleteProperty(mockShortenedUpdate, 'url');
+      Reflect.deleteProperty(mockShortenedUpdate, 'shortened_url');
+      try {
+        await shortenedService.udpateShortenedUrl(mockShortenedGet.id, mockShortenedUpdate, mockData.user);
+        fail(`O teste do campo (sem informar nada.) não funcionou.`);
+      }
+      catch (error) {
+        expect(error.message).toBe(WITHOUT_CHANGES_ERROR_MESSAGE);
+      }
+    });
+      it('Should return error for no changes in the database', async () => {
+        mockShortenedUpdate.url = mockData.url;
+        mockShortenedUpdate.shortened_url = mockData.shortened_url;
+        try {
+          await shortenedService.udpateShortenedUrl(mockShortenedGet.id, mockShortenedUpdate, mockData.user);
+          fail(`O teste do campo (passando informação que já estavam.) não funcionou.`);
+        }
+        catch (error) {
+          expect(error.message).toBe(WITHOUT_CHANGES_ERROR_MESSAGE);
+        }
+      });
+
+      it('Should return error for (URL) already exists', async () => {
+        Reflect.deleteProperty(mockShortenedUpdate, 'shortened_url');
+        mockShortenedUpdate.url = mockData.url;
+        try {
+          await shortenedService.udpateShortenedUrl(mockShortenedGet.id, mockShortenedUpdate, mockData.user);
+          fail(`O teste do campo (url - já existe) não funcionou.`);
+        }
+        catch (error) {
+          expect(error.message).toBe(REPEAT_OWN_URL_ERROR_MESSAGE);
+        }
+      });
+
+      it('Should return error for (Shortened URL) already exists', async () => {
+        Reflect.deleteProperty(mockShortenedUpdate, 'url');
+        mockShortenedUpdate.shortened_url = mockData.shortened_url;
+        try {
+          await shortenedService.udpateShortenedUrl(mockShortenedGet.id, mockShortenedUpdate, mockData.user);
+          fail(`O teste do campo (shortened_url - já existe) não funcionou.`);
+        }
+        catch (error) {
+          expect(error.message).toBe(SHORTENED_URL_ALREADY_EXIST);
+        }
+      });
+  });
 });

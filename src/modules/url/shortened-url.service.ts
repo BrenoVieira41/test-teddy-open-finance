@@ -110,7 +110,7 @@ export class ShortenedUrlService {
     }
 
     if (newValues.shortened_url) {
-      const shortenedUrlExist = await this.shortenedRepository.findUrlShortenedByShortenedUrl(newValues.shortened_url)
+      const shortenedUrlExist = await this.shortenedRepository.findUrlShortenedByShortenedUrl(newValues.shortened_url);
       if (shortenedUrlExist) throw new BadRequestException(SHORTENED_URL_ALREADY_EXIST);
     }
 

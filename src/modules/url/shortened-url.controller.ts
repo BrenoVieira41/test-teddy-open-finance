@@ -36,7 +36,7 @@ export class ShortenedUrlController {
   }
 
   @UseGuards(JwtAuthGuard)
-  @Get()
+  @Get('search/:id')
   @UsePipes(new ValidationPipe())
   async getShortenedUrl(
     @Query() params?: GetShortenedUrlDto,
@@ -46,7 +46,7 @@ export class ShortenedUrlController {
   }
 
   @UseGuards(JwtAuthGuard)
-  @Get('find')
+  @Get('search')
   @UsePipes(new ValidationPipe())
   async findShortenedUrl(@Req() request?: IUserRequest): Promise<ShortenedUrl[]> {
     return this.shotenedService.findShortenedUrl(request.user);

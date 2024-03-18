@@ -25,12 +25,12 @@ export const shortened_url_mock: ShortenedUrl = {
 }
 
 export class ShortenedUrlRepositoryMock {
-  public createShortened = jest.fn().mockImplementation(async (test: string) => {
+  public createShortened = jest.fn().mockImplementation(async (data: any, user_id?: string) => {
     return shortened_url_mock;
   });
 
-  public getByShortenedUrl = jest.fn().mockImplementation(async (test: string) => {
-    if (test === shortened_url_mock.shortened_url) return shortened_url_mock;
+  public getByShortenedUrl = jest.fn().mockImplementation(async (shortened_url: string) => {
+    if (shortened_url === shortened_url_mock.shortened_url) return shortened_url_mock;
     return undefined;
   });
 
@@ -47,5 +47,17 @@ export class ShortenedUrlRepositoryMock {
   public getShortenedUrlWithDeleted = jest.fn().mockImplementation(async (id: string, user_id: string) => {
     if (id === shortened_url_mock.id) return shortened_url_mock;
     return undefined;
+  });
+
+  public findUrlShortenedByUrlWithoutUser = jest.fn().mockImplementation(async (url: string, min_time: Date) => {
+    return [shortened_url_mock];
+  });
+
+  public getShortenedUrl = jest.fn().mockImplementation(async (id: string, user_id: string) => {
+    return shortened_url_mock;
+  });
+
+  public findUrlShortenedByShortenedUrl = jest.fn().mockImplementation(async (shortened_url: string) => {
+    return shortened_url_mock;
   });
 }
