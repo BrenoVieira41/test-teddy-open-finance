@@ -12,6 +12,7 @@ export const Database: TypeOrmModuleOptions = {
   password: process.env.DB_PASSWORD,
   database: process.env.DB_DATABASE,
   autoLoadEntities: true,
+  useUTC: true,
   entities: [
     __dirname + '/../**/**/*.entity{.ts,.js}',
   ],

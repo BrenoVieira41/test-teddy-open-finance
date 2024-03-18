@@ -1,17 +1,19 @@
-import { Entity, Column, PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColumn } from 'typeorm';
+import { Entity, Column, PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColumn, OneToMany } from 'typeorm';
+import { ShortenedUrl } from '../url/shortened-url.entity'
+import { UrlAccess } from '../url/acessed-url.service.ts/acessed-url.entity';
 
 @Entity('users')
 export class User {
-  @PrimaryGeneratedColumn('increment')
-  id: number;
+  @PrimaryGeneratedColumn('uuid')
+  id: string;
 
-  @Column('text')
+  @Column('varchar')
   name: string;
 
-  @Column('text', { unique: true })
+  @Column('varchar', { unique: true })
   email: string;
 
-  @Column('text', { select: true })
+  @Column('varchar', { select: true })
   password: string;
 
   @CreateDateColumn()
@@ -19,4 +21,10 @@ export class User {
 
   @UpdateDateColumn()
   updated_at: Date;
+
+  @OneToMany(() => ShortenedUrl, url => url.user)
+  urls: ShortenedUrl[];
+
+  @OneToMany(() => UrlAccess, url => url.user)
+  acesses: UrlAccess[];
 }

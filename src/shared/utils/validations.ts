@@ -8,7 +8,16 @@ const validateString = (input: string) => {
   return false;
 }
 
+const validateEmail = (email: string) => {
+  const emailRegex = new RegExp(/^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$/);
+
+  if (!email || !emailRegex.test(email)) return true;
+
+  return false;
+}
+
 export {
   beetween,
-  validateString
+  validateString,
+  validateEmail
 }

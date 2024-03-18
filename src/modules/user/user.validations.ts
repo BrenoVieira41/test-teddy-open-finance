@@ -1,6 +1,6 @@
 import { BadRequestException, Injectable } from '@nestjs/common';
 import { CreateUserDto } from './dto/user-create.dto';
-import { validateString } from '../../shared/utils/validations';
+import { validateString, validateEmail } from '../../shared/utils/validations';
 import { EMAIL_ERROR_MESSAGE, NAME_ERROR_MESSAGE, PASSWORD_ERROR_MESSAGE } from './user.constants';
 
 @Injectable()
@@ -10,9 +10,7 @@ export class UserValidate {
   }
 
   emailValidate(email: string) {
-    const emailRegex = new RegExp(/^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$/);
-
-    if (!email || !emailRegex.test(email)) throw new BadRequestException(EMAIL_ERROR_MESSAGE);
+    if (validateEmail(email)) throw new BadRequestException(EMAIL_ERROR_MESSAGE);
   }
 
   passwordValidate(password: string) {

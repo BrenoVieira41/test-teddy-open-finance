@@ -1,12 +1,12 @@
 import { ApiProperty } from '@nestjs/swagger';
 
-export class CreateUserDto {
+export class CreateShortenedUrlDto {
   @ApiProperty()
-  name: string;
+  url: string;
 
   @ApiProperty()
-  email: string;
+  shortened_url?: string;
 
   @ApiProperty()
-  password: string;
+  user_id?: string;
 }
