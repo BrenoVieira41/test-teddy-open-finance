@@ -1,4 +1,6 @@
-CREATE TABLE users (
+CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
+
+CREATE TABLE IF NOT EXISTS users (
     id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
     name VARCHAR NOT NULL,
     email VARCHAR UNIQUE NOT NULL,
@@ -7,7 +9,7 @@ CREATE TABLE users (
     updated_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
 );
 
-CREATE TABLE shortened_urls (
+CREATE TABLE IF NOT EXISTS shortened_urls (
     id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
     url VARCHAR NOT NULL,
     shortened_url VARCHAR UNIQUE NOT NULL,
@@ -18,7 +20,7 @@ CREATE TABLE shortened_urls (
     CONSTRAINT fk_user_id FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE SET NULL
 );
 
-CREATE TABLE url_accesses (
+CREATE TABLE IF NOT EXISTS url_accesses (
     id SERIAL PRIMARY KEY,
     shortened_url_id UUID NOT NULL,
     user_id UUID,
@@ -26,4 +28,3 @@ CREATE TABLE url_accesses (
     CONSTRAINT fk_shortened_url_id FOREIGN KEY (shortened_url_id) REFERENCES shortened_urls(id) ON DELETE CASCADE,
     CONSTRAINT fk_user_id FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE SET NULL
 );
-
