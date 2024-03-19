@@ -41,6 +41,9 @@ Teste feito para o processo seletivo da empresa (test teddy open finance).
   # Instalar as dependências
   $ npm install
 
+  # Criar banco de dados
+  $ docker-compose up -d
+
   # Executar a aplicação
   $ npm run start
 ```

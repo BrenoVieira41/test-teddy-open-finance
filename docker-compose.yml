@@ -1,38 +1,15 @@
 version: '3.8'
 
 services:
-  app:
-    container_name: test_teddy_open_finance
-    build:
-      context: .
-      dockerfile: Dockerfile
-    ports:
-      - "3333:3333"
-    volumes:
-      - .:/app
-    environment:
-      - PORT=3333
-      - DB_PORT=5432
-      - DB_HOST=localhost
-      - DB_DATABASE=postgres
-      - DB_SCHEMA=teddy-open
-      - DB_USER=postgres
-      - DB_PASSWORD=1234
-      - SECRET=segredo
-      - HOSTING=http://localhost:3333/redirection/
-    depends_on:
-      - postgres
-    command: npm run start:dev
-
-  postgres:
+  db:
     container_name: postgres
-    image: postgres
+    image: postgres:13
     restart: always
     ports:
-      - "5432:5432"
+      - "5499:5432"
     environment:
       - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=1234
+      - POSTGRES_PASSWORD=test
       - POSTGRES_DB=postgres
     volumes:
-      - ./src/database:/docker-entrypoint-initdb.d
+      - ./src/database/init.sql:/docker-entrypoint-initdb.d/init.sql
